@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ลอยกระทงออนไลน์ - Krathong KUB</title>
+<link rel="stylesheet" href="styles.css">
+<!-- Ethers.js -->
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>ลอยกระทงออนไลน์ 🕊️</h1>
+    <p class="subtitle">ธีมไว้อาลัย — เชื่อมต่อ KUB Chain</p>
+    <div class="wallet">
+      <button id="connectBtn">เชื่อมต่อ MetaMask</button>
+      <div id="addr"></div>
+      <div id="balance"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="left-panel">
+      <h2>สร้างกระทงของคุณ</h2>
+      <div id="partsPalette" class="palette">
+        <img src="images/base.png" alt="ฐานกระทง" class="part" data-type="base">
+        <img src="images/flower.png" alt="ดอกไม้" class="part" data-type="flower">
+        <img src="images/candle.png" alt="เทียน" class="part" data-type="candle">
+        <img src="images/incense.png" alt="ธูป" class="part" data-type="incense">
+      </div>
+
+      <div id="canvas" class="canvas" ondrop="dropHandler(event)" ondragover="dragOverHandler(event)">
+        <p class="canvasHint">ลากชิ้นส่วนมาวางที่นี่</p>
+      </div>
+      <button id="resetCanvas">รีเซ็ตกระทง</button>
+
+      <div class="controls">
+        <label>จำนวน KUB:
+          <input type="number" id="amountInput" step="0.0001" value="0.3275">
+        </label>
+        <label>คำอธิษฐาน:
+          <textarea id="wishInput" rows="3" maxlength="200" placeholder="ขอให้..."></textarea>
+        </label>
+        <label>คู่ลอย (ไม่บังคับ):
+          <input type="text" id="pairInput">
+        </label>
+        <button id="floatBtn">ลอยกระทง 🌊</button>
+      </div>
+    </section>
+
+    <section class="right-panel">
+      <h2>กระทงล่าสุด</h2>
+      <div id="krathongList" class="krathong-list"></div>
+
+      <h3>สถิติรวม</h3>
+      <div>ยอดรวมที่เผา: <span id="totalBurned">0</span> KUB</div>
+      <div>ค่าธรรมเนียมรวม: <span id="totalFees">0</span> KUB</div>
+      <div>จำนวนธุรกรรมทั้งหมด: <span id="totalTx">0</span></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>รองรับ KUB Chain (Mainnet/Testnet). ทดสอบบน Testnet ก่อนส่งจริง.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
